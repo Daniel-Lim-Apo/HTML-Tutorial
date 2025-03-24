@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Favorite Food Survey</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+      }
+      form {
+        max-width: 400px;
+      }
+      fieldset {
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 8px;
+      }
+      legend {
+        font-weight: bold;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>🍕 Food Preference Survey</h2>
+
+    <form action="/submit-food" method="POST">
+      <!-- Group related radio inputs using a <fieldset> -->
+      <fieldset>
+        <legend>Choose your favorite type of food:</legend>
+
+        <!-- Each radio button must share the same 'name' to be part of the same group -->
+        <!-- 'required' makes selection mandatory -->
+        <label>
+          <input type="radio" name="food" value="Pizza" required />
+          Pizza
+        </label>
+
+        <label>
+          <input type="radio" name="food" value="Sushi" />
+          Sushi
+        </label>
+
+        <label>
+          <input type="radio" name="food" value="Burgers" />
+          Burgers
+        </label>
+
+        <label>
+          <input type="radio" name="food" value="Salad" />
+          Salad
+        </label>
+
+        <label>
+          <input type="radio" name="food" value="Pasta" checked />
+          Pasta
+        </label>
+        <!-- 'checked' makes Pasta the default selected option -->
+      </fieldset>
+
+      <br />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

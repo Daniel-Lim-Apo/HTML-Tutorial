@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sports Categories & Form with JS</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 20px auto;
+      }
+      th,
+      td {
+        border: 1px solid #444;
+        padding: 10px;
+        text-align: center;
+      }
+      th {
+        background-color: #f0f0f0;
+      }
+      form {
+        width: 80%;
+        margin: 30px auto;
+        text-align: center;
+      }
+      input[type="text"],
+      input[type="submit"] {
+        padding: 8px;
+        font-size: 16px;
+        margin: 10px;
+      }
+      #message {
+        margin-top: 20px;
+        font-weight: bold;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center">Sports Classification</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2">Category</th>
+          <th rowspan="2">Type</th>
+          <th colspan="3">Examples</th>
+        </tr>
+        <tr>
+          <th>Example 1</th>
+          <th>Example 2</th>
+          <th>Example 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">Team Sports</td>
+          <td>Ball Games</td>
+          <td>Football</td>
+          <td>Basketball</td>
+          <td>Volleyball</td>
+        </tr>
+        <tr>
+          <td>Stick Games</td>
+          <td>Hockey</td>
+          <td>Baseball</td>
+          <td>Cricket</td>
+        </tr>
+        <tr>
+          <td rowspan="2">Individual Sports</td>
+          <td>Racquet Sports</td>
+          <td>Tennis</td>
+          <td>Badminton</td>
+          <td>Squash</td>
+        </tr>
+        <tr>
+          <td>Combat Sports</td>
+          <td>Boxing</td>
+          <td>Judo</td>
+          <td>Taekwondo</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <form id="sportForm">
+      <h2>What's Your Favorite Sport?</h2>
+      <input
+        type="text"
+        id="favoriteSport"
+        name="favoriteSport"
+        placeholder="Enter sport name"
+        required
+      />
+      <input type="submit" value="Submit" />
+      <div id="message"></div>
+    </form>
+
+    <script>
+      document
+        .getElementById("sportForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // Prevents form from reloading the page
+
+          const input = document.getElementById("favoriteSport").value.trim();
+          const message = document.getElementById("message");
+
+          if (input === "") {
+            message.style.color = "red";
+            message.textContent = "Please enter a sport name.";
+          } else {
+            message.style.color = "green";
+            message.textContent = `Your favorite sport is: ${input}`;
+            // You could also send this data to a server here if needed
+          }
+        });
+    </script>
+  </body>
+</html>

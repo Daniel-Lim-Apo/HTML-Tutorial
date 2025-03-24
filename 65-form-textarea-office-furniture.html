@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Office Furniture Preferences</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f4f8;
+        margin: 40px;
+      }
+
+      form {
+        max-width: 600px;
+        margin: auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        text-align: center;
+        color: #333;
+      }
+
+      label {
+        display: block;
+        margin-top: 20px;
+        font-weight: bold;
+        color: #444;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 120px;
+        padding: 12px;
+        margin-top: 8px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        resize: vertical;
+        font-size: 15px;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease;
+      }
+
+      textarea:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+
+      input[type="submit"] {
+        margin-top: 25px;
+        padding: 12px 25px;
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      /* Modal Styling */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 30px;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+
+      .modal-content h3 {
+        margin-top: 0;
+      }
+
+      .close-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .close-button:hover {
+        background-color: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="furnitureForm">
+      <h2>🪑 Office Furniture Preferences</h2>
+
+      <label for="furniture">Describe your ideal office furniture:</label>
+      <textarea
+        id="furniture"
+        name="furniture"
+        placeholder="E.g., I prefer an ergonomic chair, a sit-stand desk, plenty of drawers, and minimalistic design..."
+        required
+      ></textarea>
+
+      <input type="submit" value="Submit Preferences" />
+    </form>
+
+    <!-- Modal Structure -->
+    <div id="furnitureModal" class="modal">
+      <div class="modal-content">
+        <h3>Thank You for Your Input! 📝</h3>
+        <p id="furnitureOutput"></p>
+        <button class="close-button" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById("furnitureForm");
+      const modal = document.getElementById("furnitureModal");
+      const output = document.getElementById("furnitureOutput");
+
+      // Handle form submission
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form from submitting to server
+
+        const furnitureText = document.getElementById("furniture").value.trim();
+
+        if (furnitureText) {
+          output.textContent = furnitureText;
+          modal.style.display = "block";
+        }
+      });
+
+      // Close modal function
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      // Close modal when clicking outside of it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fruit Selection Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+      }
+      form {
+        max-width: 400px;
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+      }
+      select,
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>🍇 Choose Your Favorite Fruit</h2>
+
+    <form action="/submit-fruit" method="POST">
+      <!-- Label and dropdown list -->
+      <label for="fruit">Select a fruit:</label>
+      <select id="fruit" name="fruit" required>
+        <!-- Placeholder option (disabled and hidden from selection) -->
+        <option value="" disabled selected>Select your favorite fruit</option>
+
+        <!-- Fruit options -->
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="cherry">Cherry</option>
+        <option value="grape">Grape</option>
+        <option value="mango">Mango</option>
+        <option value="orange">Orange</option>
+        <option value="watermelon">Watermelon</option>
+      </select>
+
+      <br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

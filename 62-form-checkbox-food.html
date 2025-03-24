@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pizza Toppings Selection</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+      }
+      form {
+        max-width: 400px;
+      }
+      fieldset {
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 8px;
+      }
+      legend {
+        font-weight: bold;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>🍕 Choose Your Pizza Toppings</h2>
+
+    <form action="/submit-toppings" method="POST">
+      <!-- Group of related checkboxes -->
+      <fieldset>
+        <legend>Select toppings (you may choose more than one):</legend>
+
+        <!-- Checkbox inputs allow multiple selections -->
+        <label>
+          <input type="checkbox" name="toppings" value="Pepperoni" checked />
+          Pepperoni
+        </label>
+
+        <label>
+          <input type="checkbox" name="toppings" value="Mushrooms" />
+          Mushrooms
+        </label>
+
+        <label>
+          <input type="checkbox" name="toppings" value="Onions" />
+          Onions
+        </label>
+
+        <label>
+          <input type="checkbox" name="toppings" value="Olives" />
+          Olives
+        </label>
+
+        <label>
+          <input type="checkbox" name="toppings" value="Extra Cheese" />
+          Extra Cheese
+        </label>
+
+        <label>
+          <input type="checkbox" name="toppings" value="Pineapple" />
+          Pineapple
+        </label>
+      </fieldset>
+
+      <br />
+      <input type="submit" value="Submit Toppings" />
+    </form>
+  </body>
+</html>

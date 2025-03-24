@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>World Explorer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* Reset and layout */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        line-height: 1.6;
+        background-color: #f9f9f9;
+      }
+
+      /* Navbar */
+      nav {
+        background-color: #007bff;
+        color: white;
+        padding: 15px 30px;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav h1 {
+        font-size: 1.5em;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+      }
+
+      nav ul li {
+        margin-left: 25px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      nav ul li a:hover {
+        text-decoration: underline;
+      }
+
+      /* Main Sections */
+      section {
+        padding: 60px 30px;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      section h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+        font-size: 28px;
+      }
+
+      section p {
+        color: #444;
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      /* Countries grid */
+      .countries {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .country-card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .country-card:hover {
+        transform: scale(1.03);
+      }
+
+      .country-card h3 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      footer {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <h1>🌍 World Explorer</h1>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#countries">Countries</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+      <h2>Welcome to World Explorer</h2>
+      <p>
+        Discover facts and features about countries around the globe. Learn
+        about cultures, landscapes, and capitals — all in one place.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque amet
+        tempore fugiat labore. Aut odio officia atque? Ipsam nisi iusto cumque
+        sed, libero magni tenetur distinctio voluptatum modi odit mollitia!
+      </p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About This Project</h2>
+      <p>
+        This educational project is designed to help students and explorers
+        alike learn about different nations, their locations, languages, and
+        uniqueness through a simple, intuitive web interface.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid eos
+        harum illum? Iste accusamus tempora nemo deserunt ea asperiores
+        reiciendis adipisci non quam, soluta, voluptas culpa at quos. Quia,
+        explicabo.
+      </p>
+    </section>
+
+    <!-- Countries Section -->
+    <section id="countries">
+      <h2>Featured Countries</h2>
+      <div class="countries">
+        <div class="country-card">
+          <h3>🇯🇵 Japan</h3>
+          <p>Capital: Tokyo<br />Language: Japanese</p>
+        </div>
+        <div class="country-card">
+          <h3>🇫🇷 France</h3>
+          <p>Capital: Paris<br />Language: French</p>
+        </div>
+        <div class="country-card">
+          <h3>🇧🇷 Brazil</h3>
+          <p>Capital: Brasília<br />Language: Portuguese</p>
+        </div>
+        <div class="country-card">
+          <h3>🇿🇦 South Africa</h3>
+          <p>Capital: Pretoria<br />Languages: 11 Official</p>
+        </div>
+        <div class="country-card">
+          <h3>🇮🇳 India</h3>
+          <p>Capital: New Delhi<br />Languages: Hindi, English</p>
+        </div>
+        <div class="country-card">
+          <h3>🇨🇦 Canada</h3>
+          <p>Capital: Ottawa<br />Languages: English, French</p>
+        </div>
+        <div class="country-card">
+          <h3>🇩🇪 Germany</h3>
+          <p>Capital: Berlin<br />Language: German</p>
+        </div>
+        <div class="country-card">
+          <h3>🇲🇽 Mexico</h3>
+          <p>Capital: Mexico City<br />Language: Spanish</p>
+        </div>
+        <div class="country-card">
+          <h3>🇮🇹 Italy</h3>
+          <p>Capital: Rome<br />Language: Italian</p>
+        </div>
+        <div class="country-card">
+          <h3>🇨🇳 China</h3>
+          <p>Capital: Beijing<br />Language: Mandarin</p>
+        </div>
+        <div class="country-card">
+          <h3>🇰🇷 South Korea</h3>
+          <p>Capital: Seoul<br />Language: Korean</p>
+        </div>
+        <div class="country-card">
+          <h3>🇬🇧 United Kingdom</h3>
+          <p>Capital: London<br />Language: English</p>
+        </div>
+        <div class="country-card">
+          <h3>🇺🇸 USA</h3>
+          <p>Capital: Washington D.C.<br />Language: English</p>
+        </div>
+        <div class="country-card">
+          <h3>🇦🇺 Australia</h3>
+          <p>Capital: Canberra<br />Language: English</p>
+        </div>
+        <div class="country-card">
+          <h3>🇷🇺 Russia</h3>
+          <p>Capital: Moscow<br />Language: Russian</p>
+        </div>
+        <div class="country-card">
+          <h3>🇪🇬 Egypt</h3>
+          <p>Capital: Cairo<br />Language: Arabic</p>
+        </div>
+        <div class="country-card">
+          <h3>🇹🇷 Turkey</h3>
+          <p>Capital: Ankara<br />Language: Turkish</p>
+        </div>
+        <div class="country-card">
+          <h3>🇦🇷 Argentina</h3>
+          <p>Capital: Buenos Aires<br />Language: Spanish</p>
+        </div>
+        <div class="country-card">
+          <h3>🇳🇬 Nigeria</h3>
+          <p>Capital: Abuja<br />Language: English</p>
+        </div>
+        <div class="country-card">
+          <h3>🇸🇦 Saudi Arabia</h3>
+          <p>Capital: Riyadh<br />Language: Arabic</p>
+        </div>
+        <div class="country-card">
+          <h3>🇪🇸 Spain</h3>
+          <p>Capital: Madrid<br />Language: Spanish</p>
+        </div>
+        <div class="country-card">
+          <h3>🇸🇪 Sweden</h3>
+          <p>Capital: Stockholm<br />Language: Swedish</p>
+        </div>
+        <div class="country-card">
+          <h3>🇳🇴 Norway</h3>
+          <p>Capital: Oslo<br />Language: Norwegian</p>
+        </div>
+        <div class="country-card">
+          <h3>🇵🇭 Philippines</h3>
+          <p>Capital: Manila<br />Languages: Filipino, English</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>Email: info@worldexplorer.org<br />Phone: +1-234-567-890</p>
+    </section>
+
+    <footer>&copy; 2025 World Explorer. All rights reserved.</footer>
+  </body>
+</html>

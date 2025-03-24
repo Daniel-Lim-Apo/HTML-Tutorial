@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Meter and Slider Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        padding: 40px;
+      }
+
+      .section {
+        max-width: 600px;
+        margin: auto;
+      }
+
+      h2,
+      h3 {
+        text-align: center;
+        color: #333;
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 5px;
+      }
+
+      meter {
+        width: 100%;
+        height: 25px;
+        margin-bottom: 10px;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+
+      .divider {
+        margin: 50px 0 20px;
+        border-top: 2px dashed #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <h2>🎛️ Meter Tag + Slider Controls</h2>
+
+      <!-- 1. Pure HTML meter -->
+      <h3>🔹 Pure HTML Meter</h3>
+      <label>Simple Meter (60%)</label>
+      <meter value="0.6">60%</meter>
+
+      <div class="divider"></div>
+
+      <!-- 2. Enhanced meters with sliders -->
+      <h3>🔧 Interactive Meters with Sliders</h3>
+
+      <!-- Disk Space Meter -->
+      <label>Disk Usage (<span id="diskValue">75</span>%)</label>
+      <meter
+        id="diskMeter"
+        value="75"
+        min="0"
+        max="100"
+        low="30"
+        high="80"
+        optimum="10"
+      >
+        75%
+      </meter>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value="75"
+        oninput="updateMeter('diskMeter', 'diskValue', this.value)"
+      />
+
+      <!-- Battery Level Meter -->
+      <label>Battery Level (<span id="batteryValue">40</span>%)</label>
+      <meter
+        id="batteryMeter"
+        value="0.4"
+        min="0"
+        max="1"
+        low="0.2"
+        high="0.8"
+        optimum="1"
+      >
+        40%
+      </meter>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value="40"
+        oninput="
+      let v = this.value / 100;
+      document.getElementById('batteryMeter').value = v;
+      document.getElementById('batteryValue').textContent = this.value;
+    "
+      />
+
+      <!-- Performance Score Meter -->
+      <label>Performance Score (<span id="perfValue">90</span>%)</label>
+      <meter
+        id="perfMeter"
+        value="90"
+        min="0"
+        max="100"
+        low="50"
+        high="80"
+        optimum="100"
+      >
+        90%
+      </meter>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value="90"
+        oninput="updateMeter('perfMeter', 'perfValue', this.value)"
+      />
+    </div>
+
+    <script>
+      // Updates a meter and its label
+      function updateMeter(meterId, labelId, value) {
+        document.getElementById(meterId).value = value;
+        document.getElementById(labelId).textContent = value;
+      }
+    </script>
+  </body>
+</html>

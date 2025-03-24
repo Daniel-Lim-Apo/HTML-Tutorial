@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fruit Selector</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+      }
+
+      form {
+        max-width: 400px;
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      select,
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        box-sizing: border-box;
+      }
+
+      /* Modal styling */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 30px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .modal-content h2 {
+        margin-top: 0;
+      }
+
+      .close-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .close-button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>🍇 Choose Your Favorite Fruit</h2>
+
+    <form id="fruitForm">
+      <label for="fruit">Select a fruit:</label>
+      <select id="fruit" name="fruit" required>
+        <option value="" disabled selected>Select your favorite fruit</option>
+        <option value="Apple">Apple</option>
+        <option value="Banana">Banana</option>
+        <option value="Cherry">Cherry</option>
+        <option value="Grape">Grape</option>
+        <option value="Mango">Mango</option>
+        <option value="Orange">Orange</option>
+        <option value="Watermelon">Watermelon</option>
+      </select>
+
+      <br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- Modal -->
+    <div id="fruitModal" class="modal">
+      <div class="modal-content">
+        <h2>🍓 Your Favorite Fruit</h2>
+        <p id="fruitResult"></p>
+        <button class="close-button" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById("fruitForm");
+      const modal = document.getElementById("fruitModal");
+      const fruitResult = document.getElementById("fruitResult");
+
+      // Form submission handler
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent page reload
+
+        const selectedFruit = document.getElementById("fruit").value;
+
+        // Update modal content
+        fruitResult.textContent = `You selected: ${selectedFruit}`;
+
+        // Show modal
+        modal.style.display = "block";
+      });
+
+      // Close modal
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      // Close modal when clicking outside of it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

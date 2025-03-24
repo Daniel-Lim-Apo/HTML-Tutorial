@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Car Preferences Form with Modal</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f0f2f5;
+        padding: 40px;
+      }
+
+      form {
+        max-width: 600px;
+        margin: auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+
+      fieldset {
+        border: 2px solid #007bff;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+
+      legend {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #007bff;
+        padding: 0 10px;
+      }
+
+      label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin-right: 10px;
+      }
+
+      input[type="submit"] {
+        margin-top: 20px;
+        padding: 12px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 30px;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+
+      .modal-content h3 {
+        margin-top: 0;
+      }
+
+      .close-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .close-button:hover {
+        background-color: #218838;
+      }
+
+      ul {
+        text-align: left;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="carForm">
+      <fieldset>
+        <legend>🚘 Car Information</legend>
+
+        <label for="carBrand">Car Brand</label>
+        <input type="text" id="carBrand" name="carBrand" required />
+
+        <label for="carModel">Model</label>
+        <input type="text" id="carModel" name="carModel" required />
+
+        <label for="carType">Type</label>
+        <select id="carType" name="carType" required>
+          <option value="">-- Select Type --</option>
+          <option value="Sedan">Sedan</option>
+          <option value="SUV">SUV</option>
+          <option value="Coupe">Coupe</option>
+          <option value="Hatchback">Hatchback</option>
+          <option value="Truck">Truck</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>⚙️ Preferences</legend>
+
+        <label>Fuel Type</label>
+        <label
+          ><input
+            type="radio"
+            name="fuel"
+            value="Petrol"
+            required
+          />Petrol</label
+        >
+        <label><input type="radio" name="fuel" value="Diesel" />Diesel</label>
+        <label
+          ><input type="radio" name="fuel" value="Electric" />Electric</label
+        >
+        <label><input type="radio" name="fuel" value="Hybrid" />Hybrid</label>
+
+        <label>Features</label>
+        <label
+          ><input
+            type="checkbox"
+            name="features"
+            value="Sunroof"
+          />Sunroof</label
+        >
+        <label
+          ><input
+            type="checkbox"
+            name="features"
+            value="Navigation"
+          />Navigation System</label
+        >
+        <label
+          ><input
+            type="checkbox"
+            name="features"
+            value="Bluetooth"
+          />Bluetooth</label
+        >
+        <label
+          ><input type="checkbox" name="features" value="Backup Camera" />Backup
+          Camera</label
+        >
+      </fieldset>
+
+      <input type="submit" value="Submit Preferences" />
+    </form>
+
+    <!-- Modal -->
+    <div id="resultModal" class="modal">
+      <div class="modal-content">
+        <h3>✅ Your Car Preferences</h3>
+        <ul id="resultList"></ul>
+        <button class="close-button" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById("carForm");
+      const modal = document.getElementById("resultModal");
+      const resultList = document.getElementById("resultList");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const brand = document.getElementById("carBrand").value;
+        const model = document.getElementById("carModel").value;
+        const type = document.getElementById("carType").value;
+        const fuel =
+          form.querySelector('input[name="fuel"]:checked')?.value || "";
+
+        const features = Array.from(
+          form.querySelectorAll('input[name="features"]:checked')
+        ).map((cb) => cb.value);
+
+        // Display results
+        resultList.innerHTML = `
+        <li><strong>Brand:</strong> ${brand}</li>
+        <li><strong>Model:</strong> ${model}</li>
+        <li><strong>Type:</strong> ${type}</li>
+        <li><strong>Fuel Type:</strong> ${fuel}</li>
+        <li><strong>Features:</strong> ${
+          features.length ? features.join(", ") : "None selected"
+        }</li>
+      `;
+
+        modal.style.display = "block";
+      });
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      // Close modal if clicking outside content
+      window.onclick = function (event) {
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+    </script>
+  </body>
+</html>
